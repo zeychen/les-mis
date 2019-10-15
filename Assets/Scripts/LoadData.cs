@@ -66,17 +66,6 @@ namespace Lesmis
             }
         }
 
-        private void UpdateCylinderPosition(GameObject cylinder, Vector3 beginPoint, Vector3 endPoint)
-        {
-            Vector3 offset = endPoint - beginPoint;
-            Vector3 position = beginPoint + (offset / 2.0f);
-
-            cylinder.transform.position = position;
-            cylinder.transform.LookAt(beginPoint);
-            Vector3 localScale = cylinder.transform.localScale;
-            localScale.z = (endPoint - beginPoint).magnitude;
-            cylinder.transform.localScale = localScale;
-        }
         private void LoadJsonData(string jsonFile)
         {
             string fPath = Path.Combine(Application.dataPath, jsonFile);

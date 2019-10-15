@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class CharacterInfo
+namespace Lesmis
 {
-    private string name;
-    private int group;
-    private Color color;
-    private float x;
-    private float y;
-    private float z;
-
-    public static CharacterInfo CreateFromJSON(string jsonString)
+    [System.Serializable]
+    public class Nodes
     {
-        // creates CharacterInfo object 
-        Debug.Log(JsonUtility.FromJson<CharacterInfo>(jsonString));
-        return JsonUtility.FromJson<CharacterInfo>(jsonString);
+        public string id;
+        public int group;
+        public Color color;
+        public float x;
+        public float y;
+        public float z;    
     }
-    
+
+    [System.Serializable]
+    public class Links
+    {
+        public int source;
+        public int target;
+        public int value;
+    }
 }
+
+

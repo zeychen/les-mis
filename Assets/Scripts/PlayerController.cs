@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float Speed = 200.0f;
+    [SerializeField] private float Speed = 2.0f;
     [SerializeField] private float BoostFactor = 4.0f;
     [SerializeField] private float gravity = 20.0f;
     //This pragma disables the warning in this one case.
 #pragma warning disable 0649
     private float ModifiedSpeed;
     private Vector3 MovementDirection = Vector3.zero;
-    CharacterController characterController;
+    //CharacterController characterController;
 
     public float GetCurrentSpeed()
     {
@@ -25,23 +25,26 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        //characterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         this.ModifiedSpeed = this.Speed;
-        if (characterController.isGrounded)
-        {
-            MovementDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            MovementDirection *= ModifiedSpeed;
+        this.MovementDirection *= ModifiedSpeed;
 
-            if (Input.GetButton("Jump"))
-            {
-                this.ModifiedSpeed *= this.BoostFactor;
-            }
+        if (Input.GetButton("Jump"))
+        {
+            this.ModifiedSpeed *= this.BoostFactor;
         }
+        if (Input.GetButton("Fire1"))
+        {
+            this.ModifiedSpeed *= this.BoostFactor;
+        }
+        //if (characterController.isGrounded)
+        //{
+        //}
 
         this.MovementDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
         this.gameObject.transform.Translate(this.MovementDirection * Time.deltaTime * this.ModifiedSpeed);

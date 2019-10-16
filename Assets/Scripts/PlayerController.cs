@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
 #pragma warning disable 0649
     private float ModifiedSpeed;
     private Vector3 MovementDirection = Vector3.zero;
-    private float Zoom;
+    //private Ray ray;
+    //private RaycastHit hit;
 
     //CharacterController characterController;
 
@@ -35,19 +36,23 @@ public class PlayerController : MonoBehaviour
     {
         this.ModifiedSpeed = this.Speed;
         this.MovementDirection *= ModifiedSpeed;
-        this.Zoom = this.MovementDirection.z;
+        //this.Zoom = this.MovementDirection.z;
+        //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //if (Physics.Raycast(ray, out hit))
+        //{
+        //    print(hit.collider.name);
+        //}
         if (Input.GetButton("Jump"))
         {
             this.ModifiedSpeed *= this.BoostFactor;
         }
         if (Input.GetButton("Fire1"))
         {
-            Debug.Log(Input.GetAxis("Horizontal"));
             // move player forward and back
             this.MovementDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
         }
         else
-        { 
+        {
             this.MovementDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
         }
 

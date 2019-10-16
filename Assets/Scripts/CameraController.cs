@@ -27,11 +27,11 @@ public class CameraController : AbstractCameraController
 
         this.ManagedCamera.transform.position = cameraPosition;
 
-        //rotates camera according to mouse input
-        yaw += speedH * Input.GetAxis("Mouse X");
-        pitch -= speedV * Input.GetAxis("Mouse Y");
+        ////rotates camera according to mouse input
+        //yaw += speedH * Input.GetAxis("Mouse X");
+        //pitch -= speedV * Input.GetAxis("Mouse Y");
 
-        transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+        //transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 
     }
 }

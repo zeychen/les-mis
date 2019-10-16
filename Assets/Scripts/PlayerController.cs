@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         {
             this.ModifiedSpeed *= this.BoostFactor;
         }
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire2"))
         {
             // move player forward and back
             this.MovementDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));

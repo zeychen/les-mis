@@ -5,18 +5,23 @@ using UnityEngine.UI;
 
 public class LabelNodes : MonoBehaviour
 {
+    [SerializeField] private float textSize = 0.02f;
+    private GameObject player;
 
     public void ShowLabel(GameObject node)
     {
+        this.player = GameObject.FindGameObjectWithTag("Player");
         // add child gameobject for textmesh
         GameObject textLabel = new GameObject();
         textLabel.transform.SetParent(node.transform);
         TextMesh t = textLabel.AddComponent<TextMesh>();
         t.text = node.name;
-        t.fontSize = 1;
-        textLabel.transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
+        t.fontSize = 48;
+
+        // text looks at player
+        textLabel.transform.LookAt(this.player.transform.rotation * Vector3.forward);
         textLabel.transform.position = node.transform.position;
-        textLabel.transform.LookAt(Camera.main.transform);
+        textLabel.transform.localScale *= this.textSize;
     }
 
     public void HideLabel(GameObject node)

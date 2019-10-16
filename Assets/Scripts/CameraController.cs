@@ -21,9 +21,9 @@ public class CameraController : AbstractCameraController
     void LateUpdate()
     {
         var targetPosition = this.Target.transform.position;
-        var cameraPosition = this.ManagedCamera.transform.position;
+        //var cameraPosition = this.ManagedCamera.transform.position;
 
-        cameraPosition = new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
+        var cameraPosition = new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
 
         this.ManagedCamera.transform.position = cameraPosition;
 

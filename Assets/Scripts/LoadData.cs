@@ -63,6 +63,7 @@ namespace Lesmis
                 localScale.z = (endNodePos - startNodePos).magnitude;
                 cylinder.transform.localScale = localScale;
                 cylinder.transform.SetParent(this.gameObject.transform);
+                cylinder.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.gray);
             }
         }
 

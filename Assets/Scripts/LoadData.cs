@@ -21,7 +21,7 @@ namespace Lesmis
         void Start()
         {
             LoadJsonData(jsonFile);
-            PlotData();            
+            PlotData();
             //Instantiate(characterNode, new Vector3(5, 0, 0), Quaternion.identity);
             //Debug.Log(characterNode.transform.position);
             //Debug.Log(Camera.main.gameObject.transform.position);
@@ -35,23 +35,20 @@ namespace Lesmis
         {
             foreach (Nodes charaNode in this.characters)
             {
-                // generate a sphere using the x, y, and x coordinate
-                Instantiate(characterNode, new Vector3(charaNode.x, charaNode.y, charaNode.z), Quaternion.identity);
+                // generate a sphere using the x, y, and z coordinate
+                var newNode = Instantiate(characterNode, new Vector3(charaNode.x, charaNode.y, charaNode.z), Quaternion.identity);
+                newNode.transform.SetParent(this.gameObject.transform);
             }
 
             foreach (Links linkNode in this.links)
             {
-                //Debug.Log(linkNode.source);
-                // calculate the position between endpoints
                 
-
-
+                // calculate link end points
                 var startNode = linkNode.source;
                 var endNode = linkNode.target;
                 Vector3 startNodePos = new Vector3(this.characters[startNode].x, this.characters[startNode].y, this.characters[startNode].z);
                 Vector3 endNodePos = new Vector3(this.characters[endNode].x, this.characters[endNode].y, this.characters[endNode].z);
                 Vector3 offset = endNodePos - startNodePos;
-                //var scale = new Vector3(linkWidth, offset.magnitude / 2.0f, linkWidth);
                 var position = startNodePos + (offset / 2.0f);
 
                 // generate a cylinder that connects the nodes
@@ -63,6 +60,7 @@ namespace Lesmis
 
                 localScale.z = (endNodePos - startNodePos).magnitude;
                 cylinder.transform.localScale = localScale;
+                cylinder.transform.SetParent(this.gameObject.transform);
             }
         }
 

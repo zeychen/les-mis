@@ -37,7 +37,10 @@ namespace Lesmis
             {
                 // generate a sphere using the x, y, and z coordinate
                 var newNode = Instantiate(characterNode, new Vector3(charaNode.x, charaNode.y, charaNode.z), Quaternion.identity);
+                newNode.name = charaNode.id;
                 newNode.transform.SetParent(this.gameObject.transform);
+                newNode.AddComponent<MouseOverController>();
+                newNode.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.blue);
             }
 
             foreach (Links linkNode in this.links)

@@ -22,9 +22,6 @@ namespace Lesmis
         {
             LoadJsonData(jsonFile);
             PlotData();
-            //Instantiate(characterNode, new Vector3(5, 0, 0), Quaternion.identity);
-            //Debug.Log(characterNode.transform.position);
-            //Debug.Log(Camera.main.gameObject.transform.position);
         }
 
         void LateUpdate()
@@ -40,7 +37,9 @@ namespace Lesmis
                 newNode.name = charaNode.id;
                 newNode.transform.SetParent(this.gameObject.transform);
                 newNode.AddComponent<MouseOverController>();
+                newNode.AddComponent<LabelNodes>();
                 newNode.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.blue);
+                
             }
 
             foreach (Links linkNode in this.links)

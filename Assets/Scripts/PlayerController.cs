@@ -11,10 +11,6 @@ public class PlayerController : MonoBehaviour
 #pragma warning disable 0649
     private float ModifiedSpeed;
     private Vector3 MovementDirection = Vector3.zero;
-    //private Ray ray;
-    //private RaycastHit hit;
-
-    //CharacterController characterController;
 
     public float GetCurrentSpeed()
     {
@@ -26,24 +22,15 @@ public class PlayerController : MonoBehaviour
         return this.MovementDirection;
     }
 
-    void Start()
-    {
-        //characterController = GetComponent<CharacterController>();
-    }
-
     // Update is called once per frame
     void Update()
     {
         this.ModifiedSpeed = this.Speed;
         this.MovementDirection *= ModifiedSpeed;
-        //this.Zoom = this.MovementDirection.z;
-        //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //if (Physics.Raycast(ray, out hit))
-        //{
-        //    print(hit.collider.name);
-        //}
+
         if (Input.GetButton("Jump"))
         {
+            // makes movement faster
             this.ModifiedSpeed *= this.BoostFactor;
         }
         if (Input.GetButton("Fire2"))
@@ -53,6 +40,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            // moves side to side and up and down
             this.MovementDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
         }
 

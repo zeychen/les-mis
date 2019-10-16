@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 #pragma warning disable 0649
     private float ModifiedSpeed;
     private Vector3 MovementDirection = Vector3.zero;
+    private float Zoom;
+
     //CharacterController characterController;
 
     public float GetCurrentSpeed()
@@ -33,20 +35,23 @@ public class PlayerController : MonoBehaviour
     {
         this.ModifiedSpeed = this.Speed;
         this.MovementDirection *= ModifiedSpeed;
-
+        this.Zoom = this.MovementDirection.z;
         if (Input.GetButton("Jump"))
         {
             this.ModifiedSpeed *= this.BoostFactor;
         }
         if (Input.GetButton("Fire1"))
         {
-            this.ModifiedSpeed *= this.BoostFactor;
+            Debug.Log(Input.GetAxis("Horizontal"));
+            // move player forward and back
+            this.MovementDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
         }
-        //if (characterController.isGrounded)
-        //{
-        //}
+        else
+        { 
+            this.MovementDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+        }
 
-        this.MovementDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
         this.gameObject.transform.Translate(this.MovementDirection * Time.deltaTime * this.ModifiedSpeed);
+
     }
 }

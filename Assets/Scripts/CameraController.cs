@@ -23,11 +23,11 @@ public class CameraController : AbstractCameraController
         var targetPosition = this.Target.transform.position;
         var cameraPosition = this.ManagedCamera.transform.position;
 
-        cameraPosition = new Vector3(targetPosition.x, targetPosition.y, cameraPosition.z);
+        cameraPosition = new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
 
         this.ManagedCamera.transform.position = cameraPosition;
 
-        // rotates camera according to mouse input
+        //rotates camera according to mouse input
         yaw += speedH * Input.GetAxis("Mouse X");
         pitch -= speedV * Input.GetAxis("Mouse Y");
 

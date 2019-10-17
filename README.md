@@ -13,9 +13,9 @@ Unity 2019.3.0b6
 
 ## Changable variables in the inspector
 ### Player GameObject
-Player Controller:
+#### Player Controller:
 Speed - speed of the camera movement
 Boost Factor - amount to increase the speed of the camera when holding space bar
 ### Plot GameObject
-Rotate Controller:
+#### Rotate Controller:
 Mouse Sensitivity - how fast the cluster rotates with mouse movement

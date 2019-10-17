@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float Speed = 2.0f;
     [SerializeField] private float BoostFactor = 4.0f;
-    [SerializeField] private float gravity = 20.0f;
     //This pragma disables the warning in this one case.
 #pragma warning disable 0649
     private float ModifiedSpeed;

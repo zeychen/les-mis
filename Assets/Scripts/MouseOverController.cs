@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseOverController : MonoBehaviour
 {
-    [SerializeField] private Color hoverColor = Color.red;
+    [SerializeField] private Color hoverColor = Color.black;
     private Color originalColor;
 
     Ray ray;

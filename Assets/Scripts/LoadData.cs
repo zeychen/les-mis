@@ -38,7 +38,9 @@ namespace Lesmis
                 newNode.transform.SetParent(this.gameObject.transform);
                 newNode.AddComponent<MouseOverController>();
                 newNode.AddComponent<LabelNodes>();
-                newNode.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.blue);
+                Color nodeColor = new Color();
+                ColorUtility.TryParseHtmlString(charaNode.color, out nodeColor);
+                newNode.GetComponent<MeshRenderer>().material.SetColor("_Color", nodeColor);
                 
             }
 
@@ -63,7 +65,7 @@ namespace Lesmis
                 localScale.z = (endNodePos - startNodePos).magnitude;
                 cylinder.transform.localScale = localScale;
                 cylinder.transform.SetParent(this.gameObject.transform);
-                cylinder.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.gray);
+                cylinder.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.grey);
             }
         }
 

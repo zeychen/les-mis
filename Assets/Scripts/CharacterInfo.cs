@@ -9,7 +9,7 @@ namespace Lesmis
     {
         public string id;
         public int group;
-        public Color color;
+        public string color;
         public float x;
         public float y;
         public float z;    
